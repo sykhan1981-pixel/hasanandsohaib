@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BookNow — discover and book concerts, sports, theatre, festivals and experiences.">
+<title>BookNow — Event Tickets & Experiences</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--blue:#1761b8;--blue2:#0e4f9e;--ink:#13233d;--muted:#64748b;--bg:#f7f9fc;--line:#dce4ee;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.container{max-width:1250px;margin:auto;padding:0 26px}
+header{background:#fff;border-bottom:1px solid #edf1f6;position:sticky;top:0;z-index:50}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{font-size:29px;font-weight:800;letter-spacing:-2px;color:#30343b}.brand span{position:relative}.brand span:after{content:"";position:absolute;width:16px;height:5px;background:#1761b8;border-radius:50%;bottom:-7px;left:2px;transform:rotate(-15deg)}
+.right{display:flex;align-items:center;gap:11px}.locale{color:#1259ad;font-size:14px;font-weight:600;border:0;background:transparent;padding:9px 5px}.btn{border-radius:9px;padding:12px 22px;font-weight:600;background:#fff}.login{border:1px solid #1761b8;color:#1458aa}.signup{border:1px solid #1761b8;color:#1458aa}
+.category-wrap{padding:8px 0 0;background:var(--bg)}.category-bar{height:54px;background:linear-gradient(90deg,#245fae,#2867b9);border-radius:30px;display:flex;align-items:center;justify-content:center;gap:5px;padding:5px 10px;box-shadow:0 6px 14px #173b6718;overflow:auto}.cat{height:44px;border:0;background:transparent;color:#fff;border-radius:24px;padding:0 27px;display:flex;align-items:center;gap:10px;font-weight:600;white-space:nowrap}.cat.active{background:#fff;color:#1761b8;box-shadow:0 1px 4px #0002}.cat svg{width:19px;height:19px}
+main{background:var(--bg)}.hero{padding:28px 0 58px;min-height:480px}.hero-copy{max-width:1000px;margin:0 auto;padding-top:0}.hero h1{font-size:29px;line-height:1.25;margin:0 0 9px;font-weight:700;letter-spacing:-.5px}.hero p{font-size:14px;color:#64748b;line-height:1.75;margin:0}.hero ul{margin:7px 0 0;padding-left:20px;color:#64748b;font-size:14px;line-height:1.7}
+.search-panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:9px;margin-top:25px;display:flex;gap:8px;box-shadow:0 5px 18px #173b6710}.search-panel input,.search-panel select{border:0;background:#f7f9fc;border-radius:8px;padding:13px;outline:0;flex:1;color:#334155}.search-panel .find{border:0;background:#1761b8;color:#fff;border-radius:8px;padding:0 23px;font-weight:700}
+section{padding:35px 0}.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.section-title h2{font-size:25px;margin:0}.section-title p{color:var(--muted);font-size:13px;margin:5px 0 0}.categories{display:flex;gap:9px;overflow:auto}.chip{border:1px solid var(--line);background:#fff;color:#334155;padding:10px 15px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap}.chip.active{background:#1761b8;color:#fff;border-color:#1761b8}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.event{background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden;box-shadow:0 2px 8px #173b6710}.event:hover{box-shadow:0 10px 28px #173b6718;transform:translateY(-2px)}.event-img{height:175px;background-position:center;background-size:cover;position:relative}.event-img:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#0007)}.tag{position:absolute;top:11px;left:11px;z-index:2;background:#fff;color:#1761b8;border-radius:7px;padding:6px 8px;font-size:11px;font-weight:800}.event-info{padding:16px}.date{font-size:11px;color:#1761b8;font-weight:800;text-transform:uppercase}.event h3{font-size:17px;margin:7px 0}.meta{font-size:12px;color:var(--muted);margin-bottom:15px}.buy{display:flex;justify-content:space-between;align-items:center}.buy strong{font-size:13px}.buy button{border:1px solid #1761b8;background:#fff;color:#1761b8;border-radius:8px;padding:9px 13px;font-size:12px;font-weight:700}.buy button:hover{background:#1761b8;color:#fff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:#fff;border:1px solid var(--line);border-radius:13px;padding:21px}.num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#e8f1fc;color:#1761b8;font-weight:800}.step h3{font-size:16px;margin:12px 0 5px}.step p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
+.organizer{background:#1761b8;color:#fff;border-radius:15px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center}.organizer h2{margin:0;font-size:25px}.organizer p{margin:7px 0 0;color:#dceaff;font-size:13px}.white{border:0;color:#1761b8}
+footer{background:#fff;border-top:1px solid var(--line);padding:35px 0 18px}.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:35px}.footer-grid h3{font-size:15px;margin:0 0 17px}.footer-grid a{display:block;font-size:13px;color:#64748b;margin:0 0 13px}.apps img{display:block;width:116px;margin:0 0 10px}.bottom{border-top:1px solid var(--line);margin-top:20px;padding-top:18px;display:flex;justify-content:space-between;color:#64748b;font-size:12px}.social{display:flex;gap:15px}
+.modal{position:fixed;inset:0;background:#0f172acc;display:none;place-items:center;padding:20px;z-index:100}.modal.open{display:grid}.box{width:min(560px,100%);background:#fff;border-radius:15px;padding:26px;box-shadow:0 25px 70px #0005;max-height:90vh;overflow:auto}.x{float:right;border:0;background:#f1f5f9;border-radius:8px;width:34px;height:34px}.box h2{margin:0 0 5px}.sub{color:var(--muted);font-size:13px}.box label{font-size:12px;font-weight:700;color:#475569}.box input,.box select{width:100%;padding:12px;margin:6px 0 12px;border:1px solid var(--line);border-radius:8px}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}.summary{background:#f7f9fc;padding:13px;border-radius:9px;display:flex;justify-content:space-between;font-weight:800}.primary{border:0;background:#1761b8;color:#fff;border-radius:8px;padding:12px 18px;font-weight:700}.notice{font-size:11px;color:var(--muted);line-height:1.5}.success{text-align:center}.check{width:60px;height:60px;border-radius:50%;background:#dcfce7;color:#16a34a;display:grid;place-items:center;font-size:30px;margin:0 auto 14px}.ticket-preview{border:1px dashed #aab5c3;border-radius:12px;padding:17px;text-align:left;margin:15px 0}.barcode{height:44px;margin-top:14px;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 5px,#111 5px 6px,#fff 6px 10px)}
+@media(max-width:850px){.links{display:none}.right .locale{display:none}.category-bar{justify-content:flex-start}.cat{padding:0 16px}.hero{min-height:auto}.grid,.steps{grid-template-columns:1fr}.search-panel{flex-direction:column}.search-panel .find{height:44px}.organizer{flex-direction:column;align-items:flex-start;gap:20px}.footer-grid{grid-template-columns:1fr 1fr}.bottom{flex-direction:column;gap:12px}.two{grid-template-columns:1fr}}
+
+/* --- Smooth UI animations --- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes shimmer{0%{background-position:-500px 0}100%{background-position:500px 0}}
+@keyframes pulseSoft{0%,100%{box-shadow:0 0 0 0 rgba(23,97,184,.18)}50%{box-shadow:0 0 0 8px rgba(23,97,184,0)}}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+header{animation:slideDown .55s ease both}
+.category-wrap{animation:fadeUp .55s .08s ease both}
+.hero-copy{animation:fadeUp .7s .15s ease both}
+.hero-copy h1{animation:fadeUp .65s .22s ease both}
+.hero-copy p,.hero-copy ul{animation:fadeUp .65s .3s ease both}
+.search-panel{animation:fadeUp .65s .4s ease both}
+.category-bar{transition:box-shadow .25s ease,transform .25s ease}
+.category-bar:hover{box-shadow:0 10px 24px #173b6730;transform:translateY(-1px)}
+.cat{transition:background .25s ease,color .25s ease,transform .2s ease}
+.cat:hover{transform:translateY(-2px)}
+.btn,.chip,.find{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn:hover,.chip:hover,.find:hover{transform:translateY(-2px)}
+.primary,.find{animation:pulseSoft 3s ease-in-out infinite}
+.event{animation:fadeUp .65s ease both;transition:transform .25s ease,box-shadow .25s ease}
+.event:nth-child(2){animation-delay:.08s}.event:nth-child(3){animation-delay:.16s}.event:nth-child(4){animation-delay:.24s}.event:nth-child(5){animation-delay:.32s}.event:nth-child(6){animation-delay:.40s}
+.event-img{transition:transform .5s ease}.event:hover .event-img{transform:scale(1.035)}
+.event:hover .buy button{box-shadow:0 6px 14px #1761b826}
+.step{animation:fadeUp .65s ease both;transition:transform .25s ease,box-shadow .25s ease}
+.step:nth-child(2){animation-delay:.12s}.step:nth-child(3){animation-delay:.24s}
+.step:hover{transform:translateY(-5px);box-shadow:0 12px 25px #173b6715}
+.organizer{animation:fadeUp .7s .1s ease both}
+.organizer .white{transition:transform .2s ease,box-shadow .2s ease}.organizer .white:hover{transform:translateY(-3px);box-shadow:0 8px 18px #092e5a40}
+footer{animation:fadeIn .8s .2s ease both}
+.modal.open .box{animation:modalIn .28s ease both}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+</style>
+</head>
+<body>
+<header><div class="container nav">
+<a class="brand" href="#">book<span>now</span></a>
+<div class="right">
+<button class="locale">English⌄</button><button class="locale">PKR⌄</button>
+<button class="btn login" onclick="showAuth('login')">Login</button>
+<button class="btn signup" onclick="showAuth('signup')">Sign up</button>
+</div></div></header>
+<div class="category-wrap"><div class="container"><div class="category-bar">
+<button class="cat active" onclick="location.href='#events'">⌕ <span>Events</span></button>
+<button class="cat" onclick="alert('Umrah booking module coming soon')">♙ <span>Umrah</span></button>
+<button class="cat" onclick="alert('Tours booking module coming soon')">♧ <span>Tours</span></button>
+<button class="cat" onclick="alert('Visit Saudi module coming soon')">▣ <span>Visit Saudi</span></button>
+<button class="cat" onclick="alert('Visa services coming soon')">▱ <span>Visa</span></button>
+<button class="cat" onclick="alert('Insurance services coming soon')">▤ <span>Insurance</span></button>
+<button class="cat" onclick="alert('Movie tickets coming soon')">▣ <span>Movies</span></button>
+</div></div></div>
+
+<main>
+<section class="hero"><div class="container"><div class="hero-copy">
+<h1>How to Book Your Event Ticket Online Through BookNow</h1>
+<p>Book your favorite events online quickly and securely.</p>
+<ul><li>Open BookNow's website or app.</li><li>Pick your event.</li><li>Choose how many tickets you need.</li><li>Enter your name and contact details.</li><li>Pay securely and receive your digital ticket.</li></ul>
+<div class="search-panel"><input id="q" placeholder="Search events, artists or venues..." oninput="filter()"><select id="city" onchange="filter()"><option value="">All cities</option><option>Karachi</option><option>Lahore</option><option>Islamabad</option><option>Multan</option></select><button class="find" onclick="filter()">Search events</button></div>
+</div></div></section>
+
+<section id="categories"><div class="container"><div class="head"><div><h2>Explore categories</h2><p>Find something that fits your mood.</p></div></div>
+<div class="categories"><button class="chip active" onclick="cat(this,'')">All events</button><button class="chip" onclick="cat(this,'Music')">🎵 Music</button><button class="chip" onclick="cat(this,'Sports')">🏟 Sports</button><button class="chip" onclick="cat(this,'Theatre')">🎭 Theatre</button><button class="chip" onclick="cat(this,'Comedy')">😂 Comedy</button><button class="chip" onclick="cat(this,'Festival')">🎪 Festivals</button></div></div></section>
+
+<section id="events"><div class="container"><div class="head"><div><h2>Popular events</h2><p>Book your spot before tickets sell out.</p></div><span id="count" style="font-size:13px;color:var(--muted);font-weight:800"></span></div>
+<div class="grid" id="grid">
+<article class="event" data-cat="Music" data-city="Karachi" data-name="Summer Music Fest"><div class="event-img" style="background-image:url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=82')"><span class="tag">Music</span></div><div class="event-info"><div class="date">29 Aug 2026 • 8:00 PM</div><h3>Summer Music Fest</h3><div class="meta">📍 Expo Centre, Karachi</div><div class="buy"><strong>From PKR 2,500</strong><button class="btn primary" onclick="book('Summer Music Fest','Karachi','29 Aug 2026','PKR 2,500')">Book now</button></div></div></article>
+<article class="event" data-cat="Sports" data-city="Lahore" data-name="Championship Night"><div class="event-img" style="background-image:url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=82')"><span class="tag">Sports</span></div><div class="event-info"><div class="date">06 Sep 2026 • 7:30 PM</div><h3>Championship Night</h3><div class="meta">📍 Sports Arena, Lahore</div><div class="buy"><strong>From PKR 1,500</strong><button class="btn primary" onclick="book('Championship Night','Lahore','06 Sep 2026','PKR 1,500')">Book now</button></div></div></article>
+<article class="event" data-cat="Theatre" data-city="Islamabad" data-name="The Grand Stage"><div class="event-img" style="background-image:url('https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=82')"><span class="tag">Theatre</span></div><div class="event-info"><div class="date">12 Sep 2026 • 7:00 PM</div><h3>The Grand Stage</h3><div class="meta">📍 Arts Hall, Islamabad</div><div class="buy"><strong>From PKR 1,200</strong><button class="btn primary" onclick="book('The Grand Stage','Islamabad','12 Sep 2026','PKR 1,200')">Book now</button></div></div></article>
+<article class="event" data-cat="Festival" data-city="Lahore" data-name="Lahore Food & Culture Festival"><div class="event-img" style="background-image:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=82')"><span class="tag">Festival</span></div><div class="event-info"><div class="date">20 Sep 2026 • 4:00 PM</div><h3>Food & Culture Festival</h3><div class="meta">📍 Greater Iqbal Park, Lahore</div><div class="buy"><strong>From PKR 800</strong><button class="btn primary" onclick="book('Food & Culture Festival','Lahore','20 Sep 2026','PKR 800')">Book now</button></div></div></article>
+<article class="event" data-cat="Comedy" data-city="Karachi" data-name="Comedy Night Live"><div class="event-img" style="background-image:url('https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=900&q=82')"><span class="tag">Comedy</span></div><div class="event-info"><div class="date">26 Sep 2026 • 8:30 PM</div><h3>Comedy Night Live</h3><div class="meta">📍 Arts Council, Karachi</div><div class="buy"><strong>From PKR 1,000</strong><button class="btn primary" onclick="book('Comedy Night Live','Karachi','26 Sep 2026','PKR 1,000')">Book now</button></div></div></article>
+<article class="event" data-cat="Music" data-city="Multan" data-name="Sufi Evening"><div class="event-img" style="background-image:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=82')"><span class="tag">Music</span></div><div class="event-info"><div class="date">03 Oct 2026 • 7:00 PM</div><h3>Sufi Evening</h3><div class="meta">📍 Qasim Fort Grounds, Multan</div><div class="buy"><strong>From PKR 1,800</strong><button class="btn primary" onclick="book('Sufi Evening','Multan','03 Oct 2026','PKR 1,800')">Book now</button></div></div></article>
+</div><div id="empty" style="display:none;text-align:center;padding:50px;color:var(--muted)">No events found. Try another city or search term.</div></div></section>
+
+<section id="how"><div class="container"><div class="head"><div><h2>How booking works</h2><p>Simple from discovery to entry.</p></div></div><div class="steps"><div class="step"><div class="num">1</div><h3>Find your event</h3><p>Search by city, category, event or venue and compare your options.</p></div><div class="step"><div class="num">2</div><h3>Choose & pay</h3><p>Select ticket quantity, enter your details and choose a payment method.</p></div><div class="step"><div class="num">3</div><h3>Get your e-ticket</h3><p>Your digital ticket is generated after checkout and can be presented at entry.</p></div></div></div></section>
+
+<section id="organizers"><div class="container"><div class="organizer"><div><h2>Sell tickets to your event</h2><p>Create events, set ticket types, manage capacity and track sales.</p></div><button class="btn white" onclick="showOrganizer()">Start selling</button></div></div></section>
+</main>
+<footer><div class="container">
+<div class="footer-grid">
+<div><h3>About</h3><a href="#">About BookNow</a><a href="#">Contact us</a><a href="#">Blogs</a><a href="#">Announcements</a></div>
+<div><h3>Services</h3><a href="#events">Events Booking</a><a href="#">Flights Booking</a><a href="#">Bus Booking</a><a href="#">Hotel Booking</a><a href="#">Tours Booking</a><a href="#">Movies Booking</a></div>
+<div><h3>Support</h3><a href="#">Privacy policy</a><a href="#">Terms of service</a><a href="#">Help center</a><a href="#">Refund policy</a></div>
+<div><h3>Get the app</h3><div class="apps"><div style="background:#111;color:#fff;border-radius:5px;width:116px;padding:8px 7px;font-size:9px;margin-bottom:9px"> Download on the<br><b style="font-size:14px">App Store</b></div><div style="background:#111;color:#fff;border-radius:5px;width:116px;padding:8px 7px;font-size:9px">▶ GET IT ON<br><b style="font-size:13px">Google Play</b></div></div></div>
+</div>
+<div class="bottom"><span>© 2026 BookNow. All rights reserved.</span><span class="social">◎　♪　▶　f　𝕏</span></div>
+</div></footer>
+
+<div class="modal" id="modal"><div class="box"><button class="x" onclick="closeModal()">×</button><div id="content"></div></div></div>
+
+<script>
+let selectedCategory='';
+const cards=[...document.querySelectorAll('.event')];
+function filter(){const q=document.getElementById('q').value.toLowerCase(),city=document.getElementById('city').value;let n=0;cards.forEach(c=>{const ok=(!q||c.dataset.name.toLowerCase().includes(q))&&(!city||c.dataset.city===city)&&(!selectedCategory||c.dataset.cat===selectedCategory);c.style.display=ok?'block':'none';if(ok)n++});document.getElementById('empty').style.display=n?'none':'block';document.getElementById('count').textContent=n+' events'}
+function cat(el,c){selectedCategory=c;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));el.classList.add('active');filter()}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function openModal(html){document.getElementById('content').innerHTML=html;document.getElementById('modal').classList.add('open')}
+function book(name,city,date,price){openModal(`<h2>Book your ticket</h2><p class="sub">${name} · ${city} · ${date}</p><label>Ticket type</label><select id="type"><option value="2500">General Admission — ${price}</option><option value="5000">VIP — PKR 5,000</option></select><div class="two"><div><label>Full name</label><input id="name" placeholder="Your full name"></div><div><label>Email</label><input id="email" type="email" placeholder="you@example.com"></div></div><label>Quantity</label><input id="qty" type="number" min="1" max="10" value="1" oninput="total()"><div class="summary"><span>Total</span><span id="sum">PKR 2,500</span></div><p class="notice">Demo checkout: connect your preferred payment provider (e.g. card/mobile wallet) on the backend before accepting real payments.</p><button class="btn primary" style="width:100%" onclick="checkout('${name}','${city}','${date}')">Continue to checkout</button>`)}
+function total(){const q=Math.max(1,Math.min(10,Number(document.getElementById('qty').value)||1)),p=Number(document.getElementById('type').value);document.getElementById('sum').textContent='PKR '+(p*q).toLocaleString()}
+function checkout(name,city,date){const n=document.getElementById('name').value.trim(),e=document.getElementById('email').value.trim();if(!n||!e){alert('Please enter your name and email.');return}const q=document.getElementById('qty').value;openModal(`<div class="success"><div class="check">✓</div><h2>Booking confirmed</h2><p class="sub">Your demo e-ticket has been created.</p><div class="ticket-preview"><strong>${name}</strong><div style="color:#6b7280;font-size:13px;margin-top:5px">${city} · ${date} · ${q} ticket(s)</div><div class="barcode"></div><small style="display:block;margin-top:8px;color:#6b7280">BOOKNOW-DEMO-${Math.floor(Math.random()*900000+100000)}</small></div><button class="btn primary" onclick="closeModal()">Done</button></div>`)}
+function showAuth(kind){openModal(kind==='login'?'<h2>Welcome back</h2><p class="sub">Log in to manage your bookings.</p><input type="email" placeholder="Email"><input type="password" placeholder="Password"><button class="btn primary" style="width:100%">Log in</button>':'<h2>Create your account</h2><p class="sub">Save tickets and manage your bookings.</p><input placeholder="Full name"><input type="email" placeholder="Email"><input type="password" placeholder="Password"><button class="btn primary" style="width:100%">Create account</button>')}
+function showOrganizer(){openModal('<h2>Start selling tickets</h2><p class="sub">Create your organizer profile and publish your first event.</p><input placeholder="Organization / brand name"><input placeholder="Contact email"><input placeholder="Phone / WhatsApp"><button class="btn primary" style="width:100%">Create organizer profile</button>')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});filter();
+
+const revealItems=[...document.querySelectorAll('section,.organizer,.footer-grid')];
+if('IntersectionObserver' in window){
+  revealItems.forEach(el=>{if(!el.classList.contains('hero')){el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity .7s ease,transform .7s ease'}});
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';io.unobserve(e.target)}}),{threshold:.08});
+  revealItems.forEach(el=>io.observe(el));
+}
+
+</script>
+</body>
+</html>

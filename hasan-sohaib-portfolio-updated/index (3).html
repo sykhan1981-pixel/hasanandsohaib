@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanderly — Discover Your Next Adventure</title>
+  <meta name="description" content="A modern travel and tour agency website for unforgettable journeys.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --sand:#F4F0EA; --paper:#F8F9FA; --navy:#0F2C59; --slate:#1E293B;
+      --accent:#E07A5F; --green:#2A9D8F; --white:#fff; --muted:#667085;
+      --line:rgba(15,44,89,.12); --shadow:0 20px 60px rgba(15,44,89,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--slate);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    .container{width:min(1160px,92%);margin:auto}
+    .topbar{background:var(--navy);color:#fff;font-size:13px;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center}
+    nav{position:absolute;top:40px;left:0;width:100%;z-index:10;color:#fff}
+    nav .container{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:700;font-size:22px;letter-spacing:.5px}
+    .logo span{color:#ffd0c5}
+    .navlinks{display:flex;gap:30px;align-items:center}
+    .navlinks a{font-size:14px;font-weight:600;opacity:.95}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .lang{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:30px;padding:8px 12px}
+    .navbtn,.hero-btn,.book-btn{border:0;background:var(--accent);color:#fff;border-radius:999px;padding:12px 20px;font-weight:700;cursor:pointer}
+    .hero{min-height:720px;position:relative;color:#fff;display:flex;align-items:center;overflow:hidden;background:
+      linear-gradient(90deg,rgba(5,23,49,.72),rgba(5,23,49,.25)),
+      url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2200&q=85") center/cover}
+    .hero-content{padding-top:70px;max-width:720px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);font-size:13px;margin-bottom:22px}
+    h1,h2,h3{font-family:"Playfair Display",serif}
+    h1{font-size:clamp(48px,7vw,82px);line-height:1.02;margin-bottom:22px}
+    .hero p{font-size:18px;max-width:570px;color:#eef3f8}
+    .searchbox{position:absolute;bottom:42px;left:50%;transform:translateX(-50%);width:min(1080px,92%);background:#fff;color:var(--slate);border-radius:22px;padding:14px;display:grid;grid-template-columns:1.2fr 1fr .8fr .9fr auto;gap:8px;box-shadow:var(--shadow)}
+    .field{padding:10px 14px;border-right:1px solid var(--line)}
+    .field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8b93a1;font-weight:700}
+    .field input,.field select{width:100%;border:0;outline:0;background:transparent;color:var(--slate);font-weight:600;margin-top:3px}
+    .search-btn{background:var(--navy);border:0;color:#fff;border-radius:15px;padding:0 24px;font-weight:700;cursor:pointer}
+    section{padding:90px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}
+    .kicker{color:var(--accent);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}
+    h2{font-size:44px;line-height:1.1;color:var(--navy);margin-top:8px}
+    .section-head p{max-width:440px;color:var(--muted)}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+    .pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;cursor:pointer;font-weight:600;color:#526071}
+    .pill.active,.pill:hover{background:var(--navy);color:#fff}
+    .dest-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:270px 270px;gap:16px}
+    .card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:220px;background:#ddd;cursor:pointer}
+    .card:first-child{grid-row:span 2}
+    .card img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .card:hover img{transform:scale(1.06)}
+    .card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+    .card-info{position:absolute;z-index:2;left:22px;right:22px;bottom:18px;color:#fff}
+    .card-info h3{font-size:27px}.price{font-size:13px;opacity:.9}
+    .tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .tour{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(15,44,89,.05)}
+    .tour-img{height:220px;position:relative}.tour-img img{width:100%;height:100%;object-fit:cover}
+    .badge{position:absolute;top:15px;left:15px;background:#fff;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800}
+    .tour-body{padding:20px}.tour-body h3{font-size:25px;color:var(--navy)}.meta{display:flex;gap:12px;color:#748091;font-size:13px;margin:8px 0 16px}
+    .tour-bottom{display:flex;justify-content:space-between;align-items:center}.from{font-size:12px;color:#88919e}.tour-price{font-size:20px;font-weight:800;color:var(--navy)}
+    .explore{color:var(--accent);font-weight:800}
+    .split{background:var(--sand)}
+    .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+    .feature{background:#fff;padding:20px;border-radius:18px;border:1px solid var(--line)}
+    .feature strong{display:block;color:var(--navy);margin-bottom:5px}.feature p{font-size:13px;color:var(--muted)}
+    .visual{height:520px;border-radius:30px;overflow:hidden;position:relative}
+    .visual img{width:100%;height:100%;object-fit:cover}
+    .map-card{position:absolute;left:22px;bottom:22px;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);min-width:220px}
+    .map-line{height:7px;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:99px;margin-top:10px}
+    .reviews{display:grid;grid-template-columns:1fr 1.3fr;gap:55px;align-items:center}
+    .quote{background:#fff;border:1px solid var(--line);padding:34px;border-radius:26px;box-shadow:var(--shadow)}
+    .stars{color:#e09a28;letter-spacing:3px}.quote p{font-family:"Playfair Display",serif;font-size:26px;line-height:1.4;margin:18px 0}.person{font-weight:800;color:var(--navy)}
+    .cta{padding:0 0 90px}.cta-box{background:var(--navy);color:#fff;border-radius:30px;padding:55px;display:flex;align-items:center;justify-content:space-between;gap:30px}.cta h2{color:#fff}.cta p{color:#ccd7e6;margin-top:10px}
+    footer{background:#071d3b;color:#d6deea;padding:45px 0}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:35px}.footer-title{color:#fff;font-weight:800;margin-bottom:14px}.footer-grid a{display:block;color:#aebbd0;font-size:14px;margin:8px 0}.copyright{border-top:1px solid rgba(255,255,255,.1);margin-top:30px;padding-top:20px;font-size:12px;color:#8d9bb0}
+    .modal{display:none;position:fixed;inset:0;background:rgba(4,15,30,.75);z-index:50;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:24px;width:min(600px,100%);padding:30px;position:relative}.close{position:absolute;right:18px;top:14px;border:0;background:#eef1f5;border-radius:50%;width:34px;height:34px;cursor:pointer}.modal-box h2{font-size:34px}.booking-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.booking-fields input,.booking-fields select{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;outline:0}.booking-fields .full{grid-column:1/-1}
+    @media(max-width:850px){
+      .navlinks{display:none}.hero{min-height:760px}.searchbox{grid-template-columns:1fr 1fr}.search-btn{padding:14px}.field:nth-child(2){border:0}.dest-grid{grid-template-columns:1fr 1fr;grid-template-rows:250px 250px}.card:first-child{grid-row:auto;grid-column:span 2}.tour-grid{grid-template-columns:1fr}.split-grid,.reviews{grid-template-columns:1fr}.visual{height:400px}.footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:550px){
+      .topbar .container{justify-content:center}.topbar span:last-child{display:none}.hero{min-height:850px}.hero-content{padding-top:20px}.hero p{font-size:16px}.searchbox{grid-template-columns:1fr;bottom:20px}.field{border-right:0;border-bottom:1px solid var(--line)}.field:last-of-type{border-bottom:0}.search-btn{padding:15px}.section-head{display:block}h2{font-size:36px}.dest-grid{display:block}.card{height:260px;margin-bottom:14px}.features{grid-template-columns:1fr}.cta-box{padding:35px;display:block}.cta .navbtn{margin-top:22px}.footer-grid{grid-template-columns:1fr}.booking-fields{grid-template-columns:1fr}.booking-fields .full{grid-column:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>✦ Curated journeys • Local experts • 24/7 support</span><span>Call us: +92 300 1234567</span></div></div>
+
+  <nav>
+    <div class="container">
+      <a class="logo" href="#">Wander<span>ly.</span></a>
+      <div class="navlinks">
+        <a href="#destinations">Destinations</a><a href="#tours">Tours</a><a href="#why">Why Us</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions"><select class="lang"><option>EN</option><option>UR</option></select><button class="navbtn" onclick="openBooking()">Book a Trip</button></div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="eyebrow">✈ Handpicked experiences for curious travelers</div>
+      <h1>Discover your next adventure.</h1>
+      <p>From hidden mountain trails to unforgettable coastal escapes, we design journeys that turn destinations into stories you'll tell for years.</p>
+    </div>
+    <form class="searchbox" id="searchForm">
+      <div class="field"><label>Destination</label><select id="destination"><option>Anywhere</option><option>Hunza, Pakistan</option><option>Istanbul, Türkiye</option><option>Bali, Indonesia</option><option>Dubai, UAE</option><option>Switzerland</option></select></div>
+      <div class="field"><label>Travel dates</label><input type="date" id="date"></div>
+      <div class="field"><label>Guests</label><select><option>2 Guests</option><option>1 Guest</option><option>3 Guests</option><option>4+ Guests</option></select></div>
+      <div class="field"><label>Budget</label><select><option>Any budget</option><option>Under $500</option><option>$500 – $1,000</option><option>$1,000+</option></select></div>
+      <button class="search-btn">Explore</button>
+    </form>
+  </header>
+
+  <main>
+    <section id="destinations">
+      <div class="container">
+        <div class="section-head"><div><div class="kicker">Go somewhere beautiful</div><h2>Popular destinations</h2></div><p>Places chosen for their scenery, culture, food and unforgettable experiences.</p></div>
+        <div class="filters"><button class="pill active" data-filter="all">All</button><button class="pill" data-filter="beach">Beach & Resort</button><button class="pill" data-filter="hiking">Hiking & Trekking</button><button class="pill" data-filter="culture">Cultural Tours</button><button class="pill" data-filter="solo">Solo Travel</button></div>
+        <div class="dest-grid">
+          <article class="card" data-cat="hiking"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"><div class="card-info"><h3>Hunza Valley</h3><div class="price">From $499 · 7 days</div></div></article>
+          <article class="card" data-cat="culture"><img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=900&q=85"><div class="card-info"><h3>Istanbul</h3><div class="price">From $699 · 6 days</div></div></article>
+          <article class="card" data-cat="beach"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=85"><div class="card-info"><h3>Bali</h3><div class="price">From $799 · 8 days</div></div></article>
+          <article class="card" data-cat="culture"><img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85"><div class="card-info"><h3>Dubai</h3><div class="price">From $599 · 5 days</div></div></article>
+          <article class="card" data-cat="hiking"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85"><div class="card-info"><h3>Swiss Alps</h3><div class="price">From $1,299 · 9 days</div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tours" class="split">
+      <div class="container">
+        <div class="section-head"><div><div class="kicker">Made for you</div><h2>Featured experiences</h2></div><p>Thoughtfully planned itineraries with stays, transport, local guides and memorable moments.</p></div>
+        <div class="tour-grid">
+          <article class="tour"><div class="tour-img"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1000&q=85"><span class="badge">Best Seller</span></div><div class="tour-body"><h3>Hunza: Peaks & Villages</h3><div class="meta">7 days · Easy–Moderate · Small group</div><div class="tour-bottom"><div><span class="from">FROM</span><div class="tour-price">$499</div></div><button class="explore" onclick="openBooking('Hunza: Peaks & Villages')">View trip →</button></div></div></article>
+          <article class="tour"><div class="tour-img"><img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1000&q=85"><span class="badge">Cultural</span></div><div class="tour-body"><h3>European Highlights</h3><div class="meta">10 days · Easy · Private</div><div class="tour-bottom"><div><span class="from">FROM</span><div class="tour-price">$1,599</div></div><button class="explore" onclick="openBooking('European Highlights')">View trip →</button></div></div></article>
+          <article class="tour"><div class="tour-img"><img src="https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?auto=format&fit=crop&w=1000&q=85"><span class="badge">Relax</span></div><div class="tour-body"><h3>Bali: Island Reset</h3><div class="meta">8 days · Easy · Couples & solo</div><div class="tour-bottom"><div><span class="from">FROM</span><div class="tour-price">$799</div></div><button class="explore" onclick="openBooking('Bali: Island Reset')">View trip →</button></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container split-grid">
+        <div><div class="kicker">Travel with confidence</div><h2>More than a booking. A journey designed around you.</h2><p style="color:var(--muted);margin-top:18px">Our local specialists handle the details so you can focus on the moments that make a trip special.</p>
+          <div class="features"><div class="feature"><strong>✓ Local experts</strong><p>Real destination knowledge, not generic itineraries.</p></div><div class="feature"><strong>✓ Transparent pricing</strong><p>Clear inclusions and exclusions before you book.</p></div><div class="feature"><strong>✓ Flexible plans</strong><p>Adjust your route, pace and experiences.</p></div><div class="feature"><strong>✓ 24/7 support</strong><p>Someone is there when plans change.</p></div></div>
+        </div>
+        <div class="visual"><img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=85"><div class="map-card"><strong style="color:var(--navy)">Your route, at a glance</strong><div style="font-size:12px;color:var(--muted)">5 stops · 8 experiences · 1 unforgettable trip</div><div class="map-line"></div></div></div>
+      </div>
+    </section>
+
+    <section id="reviews" class="split">
+      <div class="container reviews">
+        <div><div class="kicker">Loved by travelers</div><h2>Stories from the road.</h2><p style="color:var(--muted);margin-top:15px">Every journey is different. That's exactly how we like it.</p></div>
+        <div class="quote"><div class="stars">★★★★★</div><p>“Everything felt effortless—from airport pickup to our last mountain sunset. The itinerary gave us structure without taking away the freedom to explore.”</p><div class="person">Sarah M. · Karachi</div><div style="font-size:13px;color:var(--muted)">Traveled to Hunza · June 2026</div></div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact"><div class="container"><div class="cta-box"><div><div class="kicker" style="color:#ffd0c5">Your next chapter starts here</div><h2>Tell us where you want to go.</h2><p>We'll turn the idea into a trip worth remembering.</p></div><button class="navbtn" onclick="openBooking()">Plan My Trip</button></div></div></section>
+  </main>
+
+  <footer><div class="container"><div class="footer-grid"><div><div class="logo">Wander<span>ly.</span></div><p style="margin-top:10px;max-width:280px;color:#9eabc0">Curated adventures, thoughtful planning and local expertise.</p></div><div><div class="footer-title">Explore</div><a href="#destinations">Destinations</a><a href="#tours">Featured Tours</a><a href="#why">Why Wanderly</a></div><div><div class="footer-title">Company</div><a href="#">About Us</a><a href="#">Travel Journal</a><a href="#">Contact</a></div><div><div class="footer-title">Support</div><a href="#">FAQs</a><a href="#">Booking Terms</a><a href="#">Privacy</a></div></div><div class="copyright">© 2026 Wanderly Travel & Tours. Demo website — replace branding, contact details and booking system before launch.</div></div></footer>
+
+  <div class="modal" id="bookingModal"><div class="modal-box"><button class="close" onclick="closeBooking()">×</button><div class="kicker">Start planning</div><h2>Book your adventure</h2><p style="color:var(--muted);margin-top:7px">Tell us a little about your trip and we'll get back to you.</p><form class="booking-fields" onsubmit="submitBooking(event)"><input required placeholder="Your name"><input required type="email" placeholder="Email address"><input placeholder="Phone / WhatsApp"><select id="modalTrip"><option>Choose a tour</option><option>Hunza: Peaks & Villages</option><option>European Highlights</option><option>Bali: Island Reset</option></select><input class="full" type="date"><textarea class="full" placeholder="Anything you'd like us to know?" style="min-height:90px;padding:13px;border:1px solid var(--line);border-radius:12px;resize:vertical"></textarea><button class="book-btn full">Send Enquiry</button></form></div></div>
+
+<script>
+  const modal=document.getElementById('bookingModal');
+  function openBooking(trip=''){ modal.classList.add('show'); if(trip) document.getElementById('modalTrip').value=trip; }
+  function closeBooking(){ modal.classList.remove('show'); }
+  modal.addEventListener('click',e=>{if(e.target===modal)closeBooking()});
+  function submitBooking(e){e.preventDefault(); alert('Thanks! Your enquiry has been received. Connect this form to your email/CRM before launch.'); closeBooking();}
+  document.querySelectorAll('.pill').forEach(btn=>btn.addEventListener('click',()=>{
+    document.querySelectorAll('.pill').forEach(x=>x.classList.remove('active')); btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    document.querySelectorAll('.card').forEach(c=>c.style.display=(filter==='all'||c.dataset.cat===filter)?'block':'none');
+  }));
+  document.getElementById('searchForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const d=document.getElementById('destination').value;
+    document.getElementById('tours').scrollIntoView({behavior:'smooth'});
+    if(d!=='Anywhere') alert('Showing travel ideas for '+d+'. Connect this search to your real tour database for live filtering.');
+  });
+</script>
+</body>
+</html>
